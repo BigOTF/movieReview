@@ -25,6 +25,18 @@ let button = document.querySelector('#btn')
 let editBtn = document.querySelector('#editBtn')
 let deleteBtn = document.querySelector('#deleteBtn')
 
+rating.addEventListener("input", function() {
+    // Get the entered value
+    let value = parseInt(rating.value);
+
+    // Check if the value is within the range 1-5
+    if (isNaN(value) || value < 1 || value > 5) {
+        
+        rating.value = "";
+        alert("Please enter a number between 1 and 5.");
+    }
+});
+
 /* FUNCTION TO SAVE THE DATA IN THE FIRESTORE DB WITH A CUSTOM ID OF REVIEW-NUMBER */
 async function saveCustom() {
     let ref = doc(db, "movieReviewData", reviewNumber.value);
