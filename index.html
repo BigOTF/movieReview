@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <p class="heading">Movie Review</p>
+
+    <div class="form" method="post">
+        
+        <div class="form-div">
+            <label for="reviewId" class="form-label">Review No:</label>
+            <input 
+                id="reviewId"
+                type="number"
+                placeholder="Enter review number"
+            />
+        </div>
+        
+        <div class="form-div">
+            <label for="movie-name" class="form-label">Movie Name:</label>
+            <input 
+                id="movie-name"
+                type="text"
+                placeholder="Enter movie name"
+            />
+        </div>
+
+        <div class="form-div">
+            <label for="movie-rating" class="form-label">Movie Rating:</label>
+            <input min='0' max="5"
+                id="movie-rating"
+                type='number'
+                placeholder="Enter rating from 0-5"
+            />
+        </div>
+
+        <div class="form-div">
+            <label for="director-name" class="form-label">Director's Name:</label>
+            <input
+                id="director-name"
+                type='text'
+                placeholder="Enter director's name"
+            />
+        </div>
+
+        <div class="form-div">
+            <label for="release-date" class="form-label">Release Date:</label>
+            <input
+                id="release-date"
+                type='date'
+            />
+        </div>
+
+        <div class="form-div">
+            <label for="movie-review" class="form-label">Movie Review:</label>
+            <input
+                id="movie-review"
+                type='text'
+                placeholder="Type in review"
+            />
+        </div>
+
+        <div>
+            <button class="form-button" id="btn">
+                Post Review
+            </button>
+            <button class="form-button" id="editBtn">
+                Edit Review
+            </button>
+            <button class="form-button" id="deleteBtn">
+                Delete Review
+            </button>
+        </div>
+
+        <div id="postData" class="id-post"></div>
+
+    </div>
+
+</body>
+<script type="module" src="index.js"></script>
+</html>
