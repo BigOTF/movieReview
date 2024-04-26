@@ -25,6 +25,7 @@ let button = document.querySelector('#btn')
 let editBtn = document.querySelector('#editBtn')
 let deleteBtn = document.querySelector('#deleteBtn')
 
+/* FUNCTION TO SAVE THE DATA IN THE FIRESTORE DB WITH A CUSTOM ID OF REVIEW-NUMBER */
 async function saveCustom() {
     let ref = doc(db, "movieReviewData", reviewNumber.value);
     const docRef = await setDoc(
@@ -51,6 +52,9 @@ async function saveCustom() {
     })
 }
 
+displayCollection()
+
+/* FUNCTION TO DISPLAY THE DATA ON THE WEB-APP */
 async function displayCollection() {
     try {
     const collectionRef = collection(db, "movieReviewData");
@@ -81,7 +85,7 @@ async function updateFieldDocument() {
     let ref = doc(db, "movieReviewData", reviewNumber.value);
 
     try {
-        // Get the document snapshot
+        //GET DOCUMENT SNAPSHOT
         const docSnap = await getDoc(ref);
 
         if (docSnap.exists()) {
