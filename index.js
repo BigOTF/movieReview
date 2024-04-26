@@ -26,7 +26,6 @@ let editBtn = document.querySelector('#editBtn')
 let deleteBtn = document.querySelector('#deleteBtn')
 
 
-
 async function displayCollection() {
     try {
     const collectionRef = collection(db, "movieReviewData");
@@ -50,7 +49,6 @@ async function displayCollection() {
         console.error("Error displaying collection: ", error);
     }
 }
-displayCollection()
 
 async function saveCustom() {
     let ref = doc(db, "movieReviewData", reviewNumber.value);
@@ -76,6 +74,7 @@ async function saveCustom() {
     .catch(() => {
         alert('Data added unsuccessfully');
     })
+    displayCollection()
 }
 
 async function updateFieldDocument() {

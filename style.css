@@ -19,16 +19,10 @@ body {
 }
 
 .form {
-   /*  padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 15px; */
-
-    display: grid;
-    grid-template-columns: repeat(2, 600px);
-    gap: 20px;
-    padding: 10px;
-    place-content: center;
+    gap: 10px;
+    padding: 20px;
 }
 
 @media (max-width: 450px) {
@@ -66,6 +60,12 @@ input[type='date'] {
     border-radius: 5px;
 }
 
+.btn-div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .form-button {
     width: 100%;
     padding: 10px 0 10px 0;
@@ -77,16 +77,10 @@ input[type='date'] {
 }
 
 .id-post {
-    /* display: flex;
+    display: flex;
     flex-direction: column;
     padding: 20px;
-    gap: 10px */
-
-    display: grid;
-    grid-template-columns: repeat(2, 500px);
-    gap: 10px;
-    padding: 10px;
-    place-content: center;
+    gap: 20px
 }
 
 @media (max-width: 450px) {
