@@ -25,6 +25,31 @@ let button = document.querySelector('#btn')
 let editBtn = document.querySelector('#editBtn')
 let deleteBtn = document.querySelector('#deleteBtn')
 
+async function saveCustom() {
+    let ref = doc(db, "movieReviewData", reviewNumber.value);
+    const docRef = await setDoc(
+        ref, {
+            reviewNumber: reviewNumber.value,
+            movieName: movieName.value,
+            rating: rating.value,
+            review: review.value,
+            directorName: directorName.value,
+            releaseDate: releaseDate.value
+        }
+    )
+    .then(() => {
+        alert('Data added already');
+        reviewNumber.value = '',
+        movieName.value = '';
+        rating.value = '';
+        review.value = '';
+        directorName.value = '';
+        releaseDate.value = '';
+    })
+    .catch(() => {
+        alert('Data added unsuccessfully');
+    })
+}
 
 async function displayCollection() {
     try {
@@ -50,32 +75,6 @@ async function displayCollection() {
     }
 }
 
-async function saveCustom() {
-    let ref = doc(db, "movieReviewData", reviewNumber.value);
-    const docRef = await setDoc(
-        ref, {
-            reviewNumber: reviewNumber.value,
-            movieName: movieName.value,
-            rating: rating.value,
-            review: review.value,
-            directorName: directorName.value,
-            releaseDate: releaseDate.value
-        }
-    )
-    .then(() => {
-        alert('Data added already');
-        reviewNumber.value = '',
-        movieName.value = '';
-        rating.value = '';
-        review.value = '';
-        directorName.value = '';
-        releaseDate.value = '';
-    })
-    .catch(() => {
-        alert('Data added unsuccessfully');
-    })
-    displayCollection()
-}
 
 async function updateFieldDocument() {
     // Get the document reference
@@ -99,6 +98,7 @@ async function updateFieldDocument() {
     } catch (error) {
         console.error("Error getting document:", error);
     }
+    displayCollection()
 }
 
 async function deleteFieldDocument() {
@@ -123,7 +123,7 @@ async function deleteFieldDocument() {
     .catch(() => {
         alert('Data not deleted unsuccessfully');
     })
-
+    displayCollection()
 } 
 
 
