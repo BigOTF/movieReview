@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css"/>
+
+    <script type="module" src="index.js" defer></script>
 </head>
 <body>
-    <p class="heading">Movie Review</p>
+
+    <header class="header">
+        <p class="headerP">
+            MovieReview.IO
+        </p>   
+    </header>
 
     <div class="form">
-        
+    
         <div class="form-div">
             <label for="reviewId" class="form-label">Review No:</label>
             <input 
@@ -64,22 +71,23 @@
             />
         </div>
 
-        <div class="btn-div">
-            <button class="form-button" id="btn">
-                Post Review
-            </button>
-            <button class="form-button" id="editBtn">
-                Edit Review
-            </button>
-            <button class="form-button" id="deleteBtn">
-                Delete Review
-            </button>
-        </div>
-
+        <button class="form-button" id="btn">
+            Post Review
+        </button>
+        <button class="form-button" id="editBtn">
+            Edit Review
+        </button>
+        <button class="form-button" id="deleteBtn">
+            Delete Review
+        </button>
     </div>
 
-    <div id="postData" class="id-post"></div>
+    <div class="reviewPost">
+        <p class="reviewPost-p">Review Post</p>
+        <div id="postData" class="id-post"></div>
+    </div>
+   
+   
 
 </body>
-<script type="module" src="index.js"></script>
 </html>

@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import { getFirestore, doc, getDoc, getDocs, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { getFirestore, doc, getDoc, getDocs, setDoc, collection, addDoc, updateDoc, deleteDoc} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyClLatXbf2bWXeFrHCVB09B55sEl7hrmjI",
@@ -14,6 +14,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 
 let postReview = document.querySelector('#postData')
+let toggle = document.getElementsByClassName('toggle')
 
 let reviewNumber = document.getElementById('reviewId')
 let movieName = document.getElementById('movie-name')
@@ -24,6 +25,7 @@ let releaseDate = document.getElementById('release-date')
 let button = document.querySelector('#btn')
 let editBtn = document.querySelector('#editBtn')
 let deleteBtn = document.querySelector('#deleteBtn')
+
 
 rating.addEventListener("input", function() {
     // Get the entered value
@@ -51,7 +53,7 @@ async function saveCustom() {
         }
     )
     .then(() => {
-        alert('Data added already');
+        alert('Your review post has been added successfully');
         reviewNumber.value = '',
         movieName.value = '';
         rating.value = '';
@@ -60,8 +62,9 @@ async function saveCustom() {
         releaseDate.value = '';
     })
     .catch(() => {
-        alert('Data added unsuccessfully');
+        alert('Review addition not successfull');
     })
+    displayCollection()
 }
 
 displayCollection()
@@ -69,6 +72,7 @@ displayCollection()
 /* FUNCTION TO DISPLAY THE DATA ON THE WEB-APP */
 async function displayCollection() {
     try {
+    postReview.innerHTML = '';
     const collectionRef = collection(db, "movieReviewData");
     const querySnapshot = await getDocs(collectionRef);
     querySnapshot.forEach((doc) => {
@@ -91,15 +95,16 @@ async function displayCollection() {
     }
 }
 
-
+/* FUNCTION TO EDIT REVIEW POST */
 async function updateFieldDocument() {
-    // Get the document reference
+    if (!reviewNumber.value) {
+        alert("Please provide a the review number of the post you want to edit, then click on the edit button again.");
+        return;
+    }
+
     let ref = doc(db, "movieReviewData", reviewNumber.value);
-
     try {
-        //GET DOCUMENT SNAPSHOT
         const docSnap = await getDoc(ref);
-
         if (docSnap.exists()) {
             const data = docSnap.data();
             movieName.value = data.movieName;
@@ -110,25 +115,27 @@ async function updateFieldDocument() {
         } else {
             console.log("No such document!");
         }
-
     } catch (error) {
         console.error("Error getting document:", error);
     }
     displayCollection()
 }
 
+/* FUNCTION TO DELETE REVIEW POST */
 async function deleteFieldDocument() {
+    if (!reviewNumber.value) {
+        alert("Please provide a the review number of the post you want to delete, then click on the delete button again.");
+        return;
+    }
     let ref = doc(db, "movieReviewData", reviewNumber.value)
     const docSnap = await getDoc(ref)
-
     if(!docSnap.exists()) {
         alert('Document does not exist')
         return;
     }
-
     await deleteDoc(ref)
     .then(() => {
-        alert('Data deleted already');
+        alert('The review has been deleted');
         reviewNumber.value = '',
         movieName.value = '';
         rating.value = '';
@@ -137,7 +144,7 @@ async function deleteFieldDocument() {
         releaseDate.value = '';
     })
     .catch(() => {
-        alert('Data not deleted unsuccessfully');
+        alert('Review deletion not successful');
     })
     displayCollection()
 } 

@@ -9,27 +9,27 @@ body {
     height: 100%;
     background-color: whitesmoke;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 10px;
 }
 
-.heading {
-    font-size: 1.4rem;
-    text-align: center;
-    padding: 20px 0 20px 0
+.header {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px 20px 40px;
+}
+
+.headerP {
+    color: whitesmoke;
+    font-size: 1.3rem;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 650px);
+    place-content: center;
     gap: 10px;
-    padding: 20px;
-}
-
-@media (max-width: 450px) {
-    .form {
-        display: flex;
-        flex-direction: column;
-    }
+    padding: 20px 0 20px 0;
 }
 
 .form-div {
@@ -60,14 +60,7 @@ input[type='date'] {
     border-radius: 5px;
 }
 
-.btn-div {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.form-button {
-    width: 100%;
+.form-button {  
     padding: 10px 0 10px 0;
     background-color: teal;
     color: whitesmoke;
@@ -76,28 +69,33 @@ input[type='date'] {
     border-radius: 10px;
 }
 
-.id-post {
+.reviewPost {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    gap: 20px
+    padding: 10px 80px 10px 80px;
+    gap: 10px
 }
 
-@media (max-width: 450px) {
-    .id-post {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+.reviewPost-p {
+    font-size: 1.5rem;
+    padding: 0 0 0 15px;
+}
+
+.id-post {
+    display: grid;
+    grid-template-columns: repeat(2, 650px);
+    gap: 20px
 }
 
 .post-div {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 10px;
     border: 1px solid gray;
     padding: 10px;
     border-radius: 10px;
+    box-shadow: 0.5px 0.5px 0px 0.5px;
 }
 
 .post-div-display {
@@ -114,4 +112,25 @@ a {
 
 .no-data-p {
     font-size: 1.2rem;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 450px) {
+    .header {
+        padding: 20px;
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+    .id-post {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .reviewPost {
+        padding: 10px;
+        gap: 10px
+    }
 }
