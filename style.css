@@ -83,7 +83,7 @@ input[type='date'] {
 
 .id-post {
     display: grid;
-    grid-template-columns: repeat(2, 650px);
+    grid-template-columns: repeat(2, 500px);
     gap: 20px
 }
 

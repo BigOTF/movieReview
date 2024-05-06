@@ -2,19 +2,19 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/fireba
 import { getFirestore, doc, getDoc, getDocs, setDoc, collection, addDoc, updateDoc, deleteDoc} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyClLatXbf2bWXeFrHCVB09B55sEl7hrmjI",
-  authDomain: "thenewreview-e49fe.firebaseapp.com",
-  projectId: "thenewreview-e49fe",
-  storageBucket: "thenewreview-e49fe.appspot.com",
-  messagingSenderId: "35081402021",
-  appId: "1:35081402021:web:edf40792d3862631793f4c"
+  apiKey: "AIzaSyASYG_lCtg2qmbyf2LYIomt8m3iN2UpA4k",
+  authDomain: "movies-review-d19b4.firebaseapp.com",
+  projectId: "movies-review-d19b4",
+  storageBucket: "movies-review-d19b4.appspot.com",
+  messagingSenderId: "721352102055",
+  appId: "1:721352102055:web:d2fdc6ddf1dc91e8c88b82",
+  measurementId: "G-R40VQBCJEC"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 
 let postReview = document.querySelector('#postData')
-let toggle = document.getElementsByClassName('toggle')
 
 let reviewNumber = document.getElementById('reviewId')
 let movieName = document.getElementById('movie-name')
